@@ -135,6 +135,7 @@ function safeSpawnSync(command, parameters, options) {
     return '"' + param.replace(/([$\\"`])/g, "\\$1") + '"';
   });
 
+  const result = spawnSync(command, parameters, options);
   if (result.status !== 0) {
     console.log(
       'Error: command "' +
@@ -146,7 +147,6 @@ function safeSpawnSync(command, parameters, options) {
     );
     process.exit(result.status);
   }
-  console.log('result', result.output.toString())
   return result;
 }
 
