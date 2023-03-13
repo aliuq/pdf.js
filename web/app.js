@@ -2145,10 +2145,23 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     }
     try {
       const viewerOrigin = new URL(window.location.href).origin || "null";
+
       if (HOSTED_VIEWER_ORIGINS.includes(viewerOrigin)) {
         // Hosted or local viewer, allow for any file locations
         return;
       }
+      const url = new URL(window.location.href);
+      const allowLocal = url.searchParams.get("allowLocal");
+      const allowHttp = url.searchParams.get("allowHttp");
+
+      if (allowLocal && /localhost|127\.0\.0\.1|192\.168\./.test(url.host)) {
+        return;
+      }
+
+      if (allowHttp && file.startsWith("http:")) {
+        return;
+      }
+
       const fileOrigin = new URL(file, window.location.href).origin;
       // Removing of the following line will not guarantee that the viewer will
       // start accepting URLs from foreign origin -- CORS headers on the remote
