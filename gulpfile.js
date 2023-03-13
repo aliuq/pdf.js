@@ -69,7 +69,9 @@ const COMMON_WEB_FILES = [
 ];
 const MOZCENTRAL_DIFF_FILE = "mozcentral.diff";
 
-const REPO = "git@github.com:mozilla/pdf.js.git";
+// Change repo to my fork project url
+// const REPO = "git@github.com:mozilla/pdf.js.git";
+const REPO = "git@github.com:aliuq/pdf.js.git";
 const DIST_REPO_URL = "https://github.com/mozilla/pdfjs-dist";
 
 const builder = require("./external/builder/builder.js");
@@ -133,7 +135,6 @@ function safeSpawnSync(command, parameters, options) {
     return '"' + param.replace(/([$\\"`])/g, "\\$1") + '"';
   });
 
-  const result = spawnSync(command, parameters, options);
   if (result.status !== 0) {
     console.log(
       'Error: command "' +
@@ -145,6 +146,7 @@ function safeSpawnSync(command, parameters, options) {
     );
     process.exit(result.status);
   }
+  console.log('result', result.output.toString())
   return result;
 }
 
