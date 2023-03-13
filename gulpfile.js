@@ -70,7 +70,7 @@ const COMMON_WEB_FILES = [
 const MOZCENTRAL_DIFF_FILE = "mozcentral.diff";
 
 // Change repo to my fork project url
-// const REPO = "git@github.com:mozilla/pdf.js.git";
+// const REPO = "git@github.com:mozilla/pdf.js.git"
 const REPO = "git@github.com:aliuq/pdf.js.git";
 const DIST_REPO_URL = "https://github.com/mozilla/pdfjs-dist";
 
